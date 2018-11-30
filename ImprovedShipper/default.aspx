@@ -323,10 +323,12 @@
         clearTimeout(timer);
             timer = setTimeout(function () {
                 if (thisElement.css("border-color") == "rgb(255, 0, 0)") {
-                    //alert("hit the color bool");
-                    //thisElement.css("border-color") = "rgb(206, 212, 218)";//this did not work
+                    //alert("hit the color is red bool");
+                    //thisElement.css("border-color") = "rgb(128, 189, 255)";//this did not work
+                    //PageMethods.SetBoderColors();this did not work work...page methods are garbage
                     thisElement.removeAttr("style");
-                    PageMethods.SetBoderColors();
+                    console.log(thisElement.attr("id"));
+                    AJAX(thisElement.attr("id"));
                 }
                 else {
                     console.log(value);
@@ -335,5 +337,20 @@
             }, 1000);
         };
     });
+    function AJAX(id) {
+        $.ajax({  
+            type: "POST",  
+            url: "default.aspx/SetBorderColors",  
+            contentType: "application/json; charset=utf-8",  
+            dataType: "json",
+            data: '{"data":"'+ id +'"}',
+            success: function (response) {   
+                alert(response.d);
+            },  
+            failure: function (response) {  
+                 alert(response.d);  
+            }  
+         });
+    }
 </script>
 </html>

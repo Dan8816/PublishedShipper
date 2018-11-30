@@ -99,11 +99,12 @@ namespace ImprovedShipper
         }
 
         [WebMethod]
-        public static void SetBorderColors()
+        public static string SetBorderColors(string ID)
         {
-            System.Diagnostics.Debug.WriteLine("***** Successfully calld method from client-side and the color is ");
-            //string JsonResponse = (new JavaScriptSerializer()).Serialize("This message is from the codebehind");
-            //return JsonResponse;
+            string aspID = ID;
+            System.Diagnostics.Debug.WriteLine("***** Successfully calld method from client-side and the ID is " + aspID);
+            string JsonResponse = (new JavaScriptSerializer()).Serialize("This message is from the codebehind and param is" + aspID);
+            return JsonResponse;
         }
 
         //<==================================================< Dan Engle 10/9/2018 <===================================================<
